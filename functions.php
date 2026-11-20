@@ -676,3 +676,78 @@ function final_decisions_render_pagination() {
 function final_decisions_result_type() {
 	return get_post_type() === 'page' ? __( 'Page', 'final-decisions' ) : __( 'Article', 'final-decisions' );
 }
+
+/**
+ * Output Open Graph metadata for pages and posts.
+ *
+ * @return void
+ */
+function final_decisions_open_graph() {
+	if ( is_preview() || is_404() ) {
+		return;
+	}
+
+	$site_name   = 'Final Decisions PLLC';
+	$image_url   = 'https://finaldecisions.org/wp-content/uploads/open-graph.png';
+	$description = 'Final Decisions PLLC partners with lawyers to produce clear, concise, and convincing appellate advocacy.';
+	$type        = 'website';
+
+	$descriptions = array(
+		'home'      => $description,
+		'archive'   => 'Appellate Notes examines recent decisions and developments in federal appellate jurisdiction and procedure.',
+		'about'     => 'Final Decisions PLLC represents parties in federal civil appeals and works with trial counsel on appellate issues during litigation.',
+		'services'  => 'Appeals, briefing, and appellate advice in federal civil cases.',
+		'contact'   => 'Contact the firm to discuss your appeal or appellate issue.',
+		'research'  => 'Articles on federal appellate jurisdiction and procedure.',
+		'copyright' => 'Copyright information for Final Decisions PLLC.',
+		'privacy'   => 'Privacy information for Final Decisions PLLC.',
+		'legal'     => 'Legal disclaimers for Final Decisions PLLC.',
+	);
+
+	if ( is_home() ) {
+		$title = 'Appellate Notes';
+		$description = $descriptions['archive'];
+		$url = get_pagenum_link( max( 1, (int) get_query_var( 'paged' ) ), false );
+	} elseif ( is_singular() ) {
+		$post = get_queried_object();
+
+		if ( ! ( $post instanceof WP_Post ) || '' !== $post->post_password || 'publish' !== $post->post_status ) {
+			return;
+		}
+
+		$url  = get_permalink( $post );
+		$name = final_decisions_static_page_name( $post->ID );
+
+		if ( $name && isset( $descriptions[ $name ] ) ) {
+			$titles      = final_decisions_static_titles();
+			$title       = $titles[ $name ];
+			$description = $descriptions[ $name ];
+		} else {
+			$title = get_the_title( $post );
+			$text  = $post->post_excerpt ? $post->post_excerpt : $post->post_content;
+			$text  = wp_strip_all_tags( strip_shortcodes( $text ), true );
+
+			if ( '' !== trim( $text ) ) {
+				$description = wp_trim_words( $text, 30, '…' );
+			}
+		}
+
+		if ( 'post' === $post->post_type ) {
+			$type = 'article';
+		}
+	} else {
+		// Search results and other archives do not receive Open Graph tags.
+		return;
+	}
+
+	printf( "<meta property=\"og:site_name\" content=\"%s\">\n", esc_attr( $site_name ) );
+	printf( "<meta property=\"og:title\" content=\"%s\">\n", esc_attr( $title ) );
+	printf( "<meta property=\"og:description\" content=\"%s\">\n", esc_attr( $description ) );
+	printf( "<meta property=\"og:type\" content=\"%s\">\n", esc_attr( $type ) );
+	printf( "<meta property=\"og:url\" content=\"%s\">\n", esc_url( $url ) );
+
+	if ( $image_url ) {
+		printf( "<meta property=\"og:image\" content=\"%s\">\n", esc_url( $image_url ) );
+	}
+}
+add_action( 'wp_head', 'final_decisions_open_graph' );
