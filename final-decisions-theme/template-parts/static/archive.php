@@ -1,0 +1,1 @@
+<p>Appellate Notes examines recent decisions and developments in federal appellate jurisdiction and procedure. Frequent topics include when parties can appeal, what appellate courts can review, and how the rules governing appeals work.</p>

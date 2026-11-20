@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schemas.wp.org/wp/6.3/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": false,
+    "color": {
+      "custom": false,
+      "defaultPalette": false,
+      "customGradient": false,
+      "defaultGradients": false,
+      "palette": [],
+      "gradients": []
+    },
+    "layout": {
+      "contentSize": "68ch",
+      "wideSize": "80rem"
+    },
+    "typography": {
+      "customFontSize": false,
+      "fontFamilies": [
+        {
+          "fontFamily": "\"IBM Plex Sans\", Arial, sans-serif",
+          "slug": "interface",
+          "name": "IBM Plex Sans"
+        },
+        {
+          "fontFamily": "Literata, Georgia, serif",
+          "slug": "reading",
+          "name": "Literata"
+        },
+        {
+          "fontFamily": "\"Cormorant Garamond\", Georgia, serif",
+          "slug": "display",
+          "name": "Cormorant Garamond"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "\"IBM Plex Sans\", Arial, sans-serif",
+      "lineHeight": "1.5"
+    }
+  }
+}
