@@ -1,54 +1,40 @@
 <?php
-
-/*
-    Final Decisions Theme
-
-    Home file for all blog posts.
-*/
+/**
+ * Appellate Notes archive.
+ *
+ * @package Final_Decisions
+ */
 
 get_header();
 ?>
+<main id="main-content" class="site-main site-main--archive notes-archive">
+<header class="archive-header">
+	<p class="archive-eyebrow">Writing about federal appeals</p>
+	<h1><?php esc_html_e( 'Appellate Notes', 'final-decisions' ); ?></h1>
+	<div class="entry-content archive-introduction">
+		<?php get_template_part( 'template-parts/static/archive' ); ?>
+	</div>
+</header>
 
-<main>
-    <?php get_template_part('template-parts/random-banner'); ?>
+<p class="archive-list-label">Recent writing</p>
+	<?php if ( have_posts() ) : ?>
+		<ol class="article-list">
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				get_template_part( 'template-parts/article-preview' );
+			endwhile;
+			?>
+		</ol>
+		<?php final_decisions_render_pagination(); ?>
+	<?php else : ?>
+		<section class="empty-state" aria-labelledby="archive-empty-title">
+			<h2 id="archive-empty-title"><?php esc_html_e( 'No articles are available here yet.', 'final-decisions' ); ?></h2>
+			<?php final_decisions_render_search_form(); ?>
+		</section>
+	<?php endif; ?>
 
-    <div class="container pt-1">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a class="link-light" href="/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog</li>
-            </ol>
-        </nav>
-    </div>
-
-    <div class="container-fluid px-0 pt-1 pb-5">
-        <div class="container">
-            <h1 class="display-4 text-white text-center">Blog</h1>
-            <div class="row justify-content-between">
-                <div class="col-lg-8">
-
-                    <?php
-                    if (have_posts()) :
-                        while (have_posts()) :
-                            the_post();
-                            get_template_part('template-parts/content-excerpts', get_post_format());
-                        endwhile;
-                    endif;
-                    ?>
-
-                    <div>
-                        <hr>
-                        <div class="row justify-content-evenly" aria-label="post-navigation">
-                            <?php posts_nav_link(" ", "Newer Posts", "Older Posts"); ?>
-                        </div>
-                    </div>
-                </div>
-
-                <?php get_template_part('template-parts/sidebar') ?>
-
-            </div>
-        </div>
-    </div>
+	<?php final_decisions_render_contact_cta(); ?>
 </main>
-
-<?php get_footer(); ?>
+<?php
+get_footer();
