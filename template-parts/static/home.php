@@ -15,8 +15,8 @@
 </div>
 <div class="home-hero__aside">
 <p class="home-aside__eyebrow">Appellate Notes</p>
-<h2>When can a party appeal, and what can the court review?</h2>
-<p>Appellate Notes examines federal appellate jurisdiction and procedure, including when an appeal is available, what an appellate court can review, and how appeals work.</p>
+<h2>The ifs, whens, and whats of federal appeals.</h2>
+<p>Appellate Notes examines federal appellate jurisdiction and procedure, including if and when parties can appeal, the scope of appellate review, and how appeals work.</p>
 <?php final_decisions_static_link( 'archive', 'Read Appellate Notes', 'home-cta' ); ?>
 </div>
 </div>
@@ -50,7 +50,7 @@
 </div>
 <div class="editorial-section__content">
 <h3>From law teaching to appellate practice.</h3>
-<p>Bryan Lammon founded Final Decisions PLLC in 2025. Before opening the firm, he taught litigation courses and wrote about federal appellate jurisdiction. He now works with co-counsel on federal appeals.</p>
+<p>Bryan Lammon founded Final Decisions PLLC in 2025. Before opening the firm, he was a law professor, teaching litigation courses and writing about federal appellate jurisdiction. He now brings his experience and perspective to federal appeals.</p>
 <?php final_decisions_static_link( 'about', 'About Final Decisions PLLC', 'home-cta' ); ?>
 </div>
 </div>
