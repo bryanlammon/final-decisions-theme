@@ -50,7 +50,7 @@
 </div>
 <div class="editorial-section__content">
 <h3>From law teaching to appellate practice.</h3>
-<p>Bryan Lammon founded Final Decisions PLLC in 2025. Before opening the firm, he was a law professor, teaching litigation courses and writing about federal appellate jurisdiction. He now brings his experience and perspective to federal appeals.</p>
+<p>Bryan Lammon founded Final Decisions PLLC in 2025. Before opening the firm, he was a law professor who taught litigation courses and wrote about federal appellate jurisdiction. He now brings his experience and perspective to federal appeals.</p>
 <?php final_decisions_static_link( 'about', 'About Final Decisions PLLC', 'home-cta' ); ?>
 </div>
 </div>
